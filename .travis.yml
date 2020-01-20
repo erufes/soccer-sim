@@ -3,12 +3,19 @@ os: linux
 dist: xenial
 
 # Instalação de dependências
-before_install:
-  - sudo apt update
-  - sudo apt install g++ make bison libboost-all-dev flex
+addons:
+  apt:
+    update: true
+    packages:
+      - g++
+      - make
+      - bison
+      - libboost-all-dev
+      - flex
 
 # Instalação principal
 script:
   - chmod a+x configure
   - ./configure --with-boost=/usr/lib/x86_64-linux-gnu/
+  - ls /usr/lib/x86_64-linux-gnu/
   - make --with-boost=/usr/lib/x86_64-linux-gnu/

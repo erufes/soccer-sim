@@ -18,3 +18,10 @@ script:
   - chmod a+x configure
   - ./configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/
   - make
+
+deploy:
+  provider: releases
+  api_key: 973fac7c2f950a6606d5c744a559c474c397a4ca
+  file: "src/rcssserver"
+  skip_cleanup: true
+  draft: true

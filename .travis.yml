@@ -1,5 +1,7 @@
 language: cpp
+os: precise
 sudo: true
 script:
+  - chmod a+x configure
   - ./configure
   - make

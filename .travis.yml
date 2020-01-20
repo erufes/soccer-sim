@@ -22,6 +22,10 @@ script:
 deploy:
   provider: releases
   api_key: 973fac7c2f950a6606d5c744a559c474c397a4ca
-  file: "src/rcssserver"
+  file: 
+    - "src/rcssserver"
+    - "src/rcssclient"
+    - "src/rcsoccersim"
   skip_cleanup: true
-  draft: true
+  on:
+    tags: true

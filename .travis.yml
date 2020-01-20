@@ -1,6 +1,12 @@
 language: cpp
-os: precise
+os: linux
+dist: precise
 sudo: true
+
+before_install:
+  - sudo apt update
+  - sudo apt install g++ make bison libboost-dev flex
+
 script:
   - chmod a+x configure
   - ./configure

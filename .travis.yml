@@ -5,7 +5,7 @@ dist: precise
 # Instalação de dependências
 before_install:
   # - sudo apt update
-  - sudo apt install g++ make bison libboost-dev flex
+  - sudo apt install g++ make bison libboost-all-dev flex
 
 # Instalação principal
 script:

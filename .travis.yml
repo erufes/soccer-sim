@@ -10,5 +10,5 @@ before_install:
 # Instalação principal
 script:
   - chmod a+x configure
-  - ./configure
+  - ./configure --with-boost=/usr/lib/x86_64-linux-gnu/
   - make --with-boost=/usr/lib/x86_64-linux-gnu/

@@ -16,6 +16,6 @@ addons:
 # Instalação principal
 script:
   - chmod a+x configure
-  - ./configure --with-boost=/usr/lib/x86_64-linux-gnu/
+  - ./configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/
   - ls /usr/lib/x86_64-linux-gnu/
   - make --with-boost=/usr/lib/x86_64-linux-gnu/

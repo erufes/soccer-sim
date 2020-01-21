@@ -1,6 +1,7 @@
 language: cpp
 os: linux
 dist: xenial
+
 addons:
   apt:
     update: true
@@ -10,21 +11,20 @@ addons:
     - bison
     - libboost-all-dev
     - flex
+
 script:
 - chmod a+x configure
 - "./configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/"
 - make
+
+before_deploy:
+- tar -czvf rcss-bin.tar.gz src/rcssserver src/rcssclient src/rcsoccersim
+
 deploy:
   provider: releases
-  api_key:
+  token:
     secure: ffrziMiFJs0VFra0x8U4zxWgvaAJY/f//9NwnE7dmfUrzmygXij3RLiqGuwihL/WQR1i23+aCr3HtI9YN3TQrNYM9ks7wE9TbiYpWs14qgsS2K3WolG+zYWRgQNnOC56XaVdGQXi65VFIAlOGKNQmLe50UInZCE//Os6mDMgObOamAQHblxf/cdZGgWNWowNtN3kUvbHJR83X9K33y03gGkQBrWSFfunR3k1VKJxGcyzyKVMk3ouwWb7rmouC1IMkGrigM4pA84rlPx6KD3to1lRBn4Erz5UGqK2mNOjSxZuFoQPzdezRyp1NKEWtrUnRhdp0q2sDOCu77X9onL1XmJg8P+DpGjvhdJx/KRmQcjMXdANSL/vzh1fCI+XeiHvtJhF+e8k7t5kLjOOLY4sK57NyMlYrfMCwMAyHqo1XS2N/g+C5bHmHlGxDXrRUB8L/Zu5ipeXJY97GPtadBmDpn19q4SFHGkoQgP2lKXiFcGnI1itDMTThE0nGcc0VVGjLyiwNZoEfbML9oqpaJ7n6ENh5pykxtShoOCid0i7kuUlOx1cjzzYwXvagMENXrmYyXNFGihR5USIhgWcn3ZMrlQI7kFIyBZGFQF1CjegksQs8osBXBzEz/Y2u+gcTvk86T3xsqyEZyx1ZXkT7JLVomviNCIhTaSg60KpGz/rv7s=
-  file:
-  - src/rcssserver
-  - src/rcssclient
-  - src/rcsoccersim
-  skip_cleanup: true
+  file: "rcss-bin.tar.gz"
+  cleanup: true
   on:
     tags: true
-env:
-  global:
-    
